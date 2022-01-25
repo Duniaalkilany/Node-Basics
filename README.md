@@ -15,13 +15,17 @@ how computer actually understand code ?
 -so by installing and running node on our computer it can take our js and can run it through v8 compiler that it has it inside it
 -and v8 compiler inside node can compiles js into machine code
 
-![img](node.png)
+![img](img/node.png)
 
 -but node is not just a wrapper for the v8 engine it add more features to js
 ---when we use nodes to compile and run js we also can use all of extra functionallity like :
-1.ability to read and write files on a computer
+1.ability to read and write files on a computer/server side(abiltiy to interact with file system on computer using js )
+
 2.connect the database
 3.act as a server for acontant  
+4.build web server listens ti http requests
+5.can use js outside browser / can get info about operating system using built in core modules (os)/require it /then can access methods/props of this os object(os.freemem()/os.totalmem()/os.homedir()/os.platform())
+
 above is abilites or things can do it by using server-side language but we can do it using js which running through node /remember js is originally made for browser to add interactivity and not to run directly on computer or servers but using node we can do the above activites using it in server side
 //conclusion
 1.use node to run js outside browser
@@ -62,3 +66,6 @@ above is abilites or things can do it by using server-side language but we can d
 //====global object=====================================================
 in browser /front end ===>global object is window
 but in node the global object is global and that present the global context in the node environment
+
+//===========streams/buffers=====================================================//
+![img](img/2.png)

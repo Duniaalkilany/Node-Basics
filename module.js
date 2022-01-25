@@ -1,6 +1,6 @@
 /*
 refactoring code 
-1. modularity ===>givide large software into chunks (smaller parts)
+1. modularity ===>devide large software into chunks (smaller parts)
 module : just file has related code 
 -split our code into files , then  import /export things from and to  these files ()
 -keep code mush more moduler / reusable/ easier to maintain 
@@ -33,7 +33,10 @@ const {, }= require ("")//proparty names at it is inexported obj in  module wher
 
 
 /*
--ES6
+-ES6(ES2015)===>recent version of js ===> specifications that define what features are available in js
+-every year ECMA define  new features that should be added to js 
+-different browsers implement different set of these features 
+-but v8 engine that we have inside of node is up to date and implement 
 -export ===>keyword ===>to share functionallity across differnt modules 
 -export ===> to make (var / class/ function /object ...) accessable by another files (modules )
 -module.export (old school )/export in ES6
@@ -71,4 +74,5 @@ console.log(OS); //object
 
 console.log(OS.platform()); //linux
 console.log(OS.homedir()); //home/dunia
-console.log(OS.freemem()); //amount of free memory in this machine
+console.log(OS.freemem()); //amount of free memory in this machine//11974082560
+console.log(OS.totalmem()); //total memory in current machinee

@@ -76,7 +76,7 @@ localhost(host name/domain name on the web===>but this domain name (localhost) w
 
 port numbers:like doors in computer throygh which internet communication can be made to differnt programms   (represent specefic channal gateway )that server should communicated through
 -in your computer (have many softwars connected to internet and send/ recieve data(skype/discord..))
--this softwars do this (send /recieve data ) via different port number to keep information separate frm one another 
+-this softwars do this (send /recieve data ) via different port number to keep information separate from one another 
 -so our server need it is own port number to communicate through 
 -you can choose any port number (not used by another program)
 -in browser we type localhost:3000===>browser know that will connect to our own computer via port 3000
@@ -84,17 +84,17 @@ port numbers:like doors in computer throygh which internet communication can be 
 */
 
 const http = require("http");
-
-console.log(http); //object
-//create server
 const server = http.createServer((req, res) => {
-  console.log(`request come`);
+  //call back function will run every time come req to server
+  //send response
+  console.log(`a request come (receiving request from browser)`);
 });
 
 //invoke listen method
-console.log(server);
-//listening on port 3000 in localhost for request
-//server up and running and listening or for requests to localhost /port 3000
+
 server.listen(3000, "localhost", () => {
-  console.log(`listening to request on port 3000`);
+  //listening on port 3000 in localhost for request
+  //function run (fires) when server start listening
+  //server running / and lostening for request on port 3000 to localhost
+  console.log(`listening on port 3000`);
 });

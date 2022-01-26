@@ -69,3 +69,5 @@ but in node the global object is global and that present the global context in t
 
 //===========streams/buffers=====================================================//
 ![img](img/2.png)
+
+//=================clients/servers================================================//

@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
       break;
 
     //redirect===>old route to new one /change update for url(user visited )===>resourse permanently moved
-    case "/about-me":
+    case "/about--us":
       res.statusCode = 301; //moved(redirect)
       res.setHeader("Location", "/about");
       res.end();

@@ -42,21 +42,92 @@ req obj (req info)//res obj (use it to send response)
   6.if not matches any of req handlers and reach use method(middleware function fires and send res)
    7.you have to set status manually 
    res.status(404)===>return res so you can chaining with send ()
+
+   //=================================middlewares==================================================//
+   -middleware: ia a name for any code which run on the server between getting a request and send response
+   -a function run in get handlers it is also middleware (code run between getting req and send res )the different that get handler it is only fire functions only for get requests to certain ruotes
+
+   -the use method is generelly used to create middlewares and run middleware code (function) 
+   -use method function run for every single requests coming in (it will run for every types of requests to all routes )
+   -position /order of middleware is important (control how runs)
+   **middleware examples:
+   1.logger middleware===>logs details for every req
+   2.404==>return 404 pages
+   3.authentication (check middleware for protected routes)
+   4.middleware to parese json data from requests (json==>js)
+  -middle ware 404 (catch all non existing routes must me at the button because it send response and when send rs to beowser express not come on the rest code  )
+  -logger middleware===>at top (run for every single req and logs details for request)
+
+  
+//===================================using next() function ==========================================//
+
+-the browser hangs (no response) when run middleware because express does not  automatically know 
+how to move on we have to explicity tell express to move on to the next function down the middleware
+- we do this by using next function (use it as para to middleware  function(to access it )(req,res.next))
+-then call it (that mean we say to express look we finished inside this middleware now move on to the next (because we are not sending response yet to browser we just do something (like log details) and now move on and check routes handlers to  send response ) )
+//===================================logger middleware ================================//
+-run for every single req comimg on and logs details about it 
+-at top cause if i add i at button then express move from top to button and is stop carry on (move on to the rest of code when response send so when i send res it will not reach logger middle ware so i add it at top and because express does not know whan to do after run middleware function (do something /nort send res) we use next function as para in middleware function and call it to say to express that we finished inside middleware and move on to the next)
+  
+
+//==================================third-party middleware======================================//
+-using node and express ===>thereis tons of middleware functions that is already created and we can use 
+-for example there is middleware called
+1. (morgan)==> is alogger and smillar thing to our custom middleware(logger we created)
+2.helmet ===>security piece of middleware and others 
+so if there a middleware package no need to write middle ware from scrath for example to use morgan middleware:
+
+-from npmjs.comm(morgan ===> is http req logger middleware for node  )
+-install it npm i morgan
+-require it //morgan is function 
+-invoke it (morgan (a predefined format string))===>pass arguments to dictate how it is going to be formatted what will log to console
+
+//======================================static files/(ready-made middleware come along with express(static))===============================================//
+-if we add static files to our project (images /css file ) we can not automatically accessthat file from the browser 
+-the server protects all files automatically from users in browser so they can not access any of our files 
+-so to make the browser(user) access to something we have to specify what files should be allowed to be accessed
+-what files should be public
+-to do that we use some (ready-made)middleware comes along with express 
+-to make static files public (can access it /browser can access it )
+-
 */
 
 const express = require("express"); //require //return function
+const morgan = require("morgan");
 
-// console.log(express);
+// console.log(morgan); //return function//so to use this middleware invoke morgan function
+console.log(express);
 // console.log(typeof express); //function
 const app = express(); //set up express up by invoke express
-
+console.log(app);
 console.log("app====>", typeof app); //function
 app.listen(3000, () => {
   //function fires when app run and start listening for rquests on port 3000 in localhost
   console.log("listening for requests on port 3000");
 });
 
-//rotes handlers
+//=======================static middleware(come along with express )==============================//
+app.use(express.static("public")); //pass folder name (all files in this folder will be accessable (available as static file to the front end ))
+//=====================morgan middleware(third-party middleware) //instead of logger (custom middleware)========================//
+app.use(morgan("common")); //instead of build logger function from scratch just invoke
+//======================logger middleware===========================//
+
+app.use((req, res, next) => {
+  console.log(req);
+  //run for every request /logs req details (on serverside)
+  //browser will hanginig (no response send eventhough req details logs )==>because after express run logget middleware function it does not know what to do next and how to move one to the
+  console.log(
+    `method:${req.method}, url:${req.url},path:${req.path},host:${req.hostname}`
+  );
+  next(); //invoke next function//finished inside this middleware moveon to next code
+});
+
+//======================testing middleware===========================//
+app.use((req, res, next) => {
+  console.log("in the next middleware");
+  next();
+});
+//======================================routes handlers
 app.get("/", (req, res) => {
   //this function run each time (get request) to server
   //when fires (aceess req obj)
@@ -97,3 +168,5 @@ app.use((req, res) => {
     root: __dirname,
   });
 });
+
+//=============================middlewares====================================//

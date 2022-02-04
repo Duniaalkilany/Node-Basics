@@ -82,14 +82,15 @@ so if there a middleware package no need to write middle ware from scrath for ex
 -require it //morgan is function 
 -invoke it (morgan (a predefined format string))===>pass arguments to dictate how it is going to be formatted what will log to console
 
-//======================================static files/(ready-made middleware come along with express(static))===============================================//
+//======================================express middleware/built in middlrware//static files/json/(ready-made middleware come along with express(static))===============================================//
 -if we add static files to our project (images /css file ) we can not automatically accessthat file from the browser 
 -the server protects all files automatically from users in browser so they can not access any of our files 
 -so to make the browser(user) access to something we have to specify what files should be allowed to be accessed
 -what files should be public
 -to do that we use some (ready-made)middleware comes along with express 
 -to make static files public (can access it /browser can access it )
--
+*express.static("public")
+*express.json()==>This is a built-in middleware function in Express. It parses incoming requests with JSON payloads 
 */
 
 const express = require("express"); //require //return function

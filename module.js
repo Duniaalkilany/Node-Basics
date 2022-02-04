@@ -20,7 +20,7 @@ key:value
 */
 /*
 - import (receiving what i export )===>extract here in this file(module)
--if i export then require i can use it whwre i require(omprt it)==<can access to it (accessable)
+-if i export then require i can use it where i require(import it)==<can access to it (accessable)
 in node js i use 
 1-old way ===> require all things (all proparties)/whole object i exported /-in old node js the whole js file are required /you can not extract or require just a part 
 
@@ -29,7 +29,7 @@ const anyName= require("module path")
 
 2- destructuring in node able use to not require all js file (all the exported obj from module )
 , using destructuring ===> can extract whatever property from (exported obj)/require(extract) just apart 
-const {, }= require ("")//proparty names at it is inexported obj in  module where export 
+const {, }= require ("module path")//proparty names at it is inexported obj in  module where export 
 
 
 /*

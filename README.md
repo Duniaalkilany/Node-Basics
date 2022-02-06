@@ -15,7 +15,7 @@ how computer actually understand code ?
 -so by installing and running node on our computer it can take our js and can run it through v8 compiler that it has it inside it
 -and v8 compiler inside node can compiles js into machine code
 
-![img](img/node.png)
+![img](public/node.png)
 
 -but node is not just a wrapper for the v8 engine it add more features to js
 ---when we use nodes to compile and run js we also can use all of extra functionallity like :
@@ -72,3 +72,22 @@ but in node the global object is global and that present the global context in t
 
 //=================middlewares================================================//
 ![img](img/middleware.png)
+
+//=============================mongoDB==============================================//
+collection:
+![img](img/collection.png)
+
+document:
+![img](img/collection.png)
+
+mongoose:
+![img](img/mongoose.png)
+
+schema:
+![img](img/schema.png)
+
+model:
+![img](img/model.png)
+
+//=======================MVC ===========================================//
+![img](img/mvc.png)

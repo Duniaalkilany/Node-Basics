@@ -2,7 +2,7 @@
   "name": "node",
   "version": "1.0.0",
   "description": "-node allow to run js directly on server side how computer actually understand code ? -computer are really understand machine code but that is really complex to write and read -computer can not directly understand js or compile it to machine code so we can not directly run js on computer(server side) -but js can work on browser ? how ? ----an engin called the v8 engin and the v8 engin is written in c++ by google and it is compiles js into machine code at runtime ----so by passing js code through v8 engine in the browser , the computer can then understand js within the context of the browser -hoeever it can not run js outside the browser because there is no v8 engine compiling it down outside the browser -okey and this is where the role of node   -node js is aprogram also written in c++ and that wraps the v8 engine -so this v8 engine that is in browsers also lives inside node -well because node written in c++ it can run directly on our computer -so by installing and running node on our computer it can take our js and can run it through v8 compiler that it has it inside it -and v8 compiler inside node can compiles js into machine code",
-  "main": "files.js",
+  "main": "",
   "directories": {
     "doc": "docs"
   },
@@ -24,6 +24,7 @@
     "express": "^4.17.2",
     "lodash": "^4.17.21",
     "logger": "0.0.1",
+    "mongoose": "^6.1.9",
     "morgan": "^1.10.0"
   }
 }

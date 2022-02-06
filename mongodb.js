@@ -88,7 +88,7 @@ app.get("/about", (req, res) => {
 app.get("/about-us", (req, res) => {
   res.redirect("./views/about.html");
 });
-
+//handelong http requests in server
 //======================================REST route handlers================================//
 /*
 
@@ -427,36 +427,13 @@ we should send object in the body of the request
 //restful convention ==>expose our resources like customers using a simple meaningful address and support various operation around them such as (creating/reading/updating/deleting..) using standered http methods 
 
 
-**handelong http requests in server 
-, create REST route handlers for each of the REST Methods that properly calls the correct CRUD method from the matching data model.
 
+*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+ middlewares
+-logger customes
+-thirdprty middleware (morgan)
+-built in middlewares(express.json()===>(parese any request with json patload))/express.static("puplic")
 
 */

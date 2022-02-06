@@ -117,7 +117,7 @@ with much easier way to connect and communicate to with data base
 6.so we put app.listen inside then method (function that fire when promise(connection) done)
 7.create schema / model for (blog data(blog collection))
 8.so create folder called models (inside it blog.js) to create blog schema and model inside it 
-9.we used mongoose to create schema and mode so require it inside blog.js 
+9.we used mongoose to create schema and model so require it inside blog.js 
 10.use Schema constructor function(class) which use to create Schemas mongoose.Schema
 11.then use this Schema constructor to create Schema for a type of data (document)//this create new instance of Schema object
 12.pass obj as parameters to Shema class //this object will describe the structure of the document we want to store in collection 
@@ -133,7 +133,7 @@ with much easier way to connect and communicate to with data base
 15.using mongoose to create new instance (new Schema) new Schema({},{optionaml object to set timestamps propert 
 timestamps:})
 16.after create Schema (document Schema ) then create model (based on the created Schema )
-17.Schema (thing defined structure of dicument)//model is thing that surroundes that and then provides us with interface by which to communicate with DB collection for that document 
+17.Schema (thing defined structure of document)//model is thing that surroundes that and then provides us with interface by which to communicate with DB collection for that document 
 18.create constant to store model(capital letter for model constant) by using model method //mongoose.model()
 
 19.mongoose.model('modelname(singuler of collection name),Schema that model based on)

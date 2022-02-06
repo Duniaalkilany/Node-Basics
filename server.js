@@ -169,7 +169,10 @@ request/response
 *url:(that user has visited up in browser it'd from point after localhost/3000)
 ---if in browser localhost:3000/about ===>req.url===>(/about)
 
-
+/:parameters
+app.get('/api/:thing',...) = req.params.thing
+Query Strings
+http://server/route?ball=round = req.query.ball
 =================================================================
 res===>res object (what we use to send as response to browser)
 1.formulate response headers===>response headers give the browser a little bit more information about what kind of response coming back to it 

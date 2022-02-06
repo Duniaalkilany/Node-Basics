@@ -26,12 +26,12 @@ req obj (req info)//res obj (use it to send response)
 1.create new get handler for the url that we want to redirect(old url)
 2.res.redirect("new url")
 
-//==========================404(error handler)
+//==========================404(error handler)/middleware
 (use ===> use this function for every incoming req )
-**position of use method is very important (at button /after req handlers)//exopress will move from top to button and check so if find use method before handler it will fire middleware function and send response to browser / and will not carry on to the rest codeso it will not reach get the rest handlers
+**position of use method is very important (at button /after req handlers)//express will move from top to button and check so if find use method before handler it will fire middleware function and send response to browser / and will not carry on to the rest codeso it will not reach get the rest handlers
 -app.use()-==>use method using to create middleware and fire middle ware functions in express 
 //use to create middleware / fire middle ware function
-  //callback function take (req,res) as para/middlewatre function 
+  //callback middleware function take (req,res,next) as para/middlewatre function 
   //use function is going to fire every time a req come (for every single req coming in)
   //but only if the req reach use function point in the code 
   1.when send req from browser(wrong url/endpoint)//for not exist end point
@@ -45,11 +45,16 @@ req obj (req info)//res obj (use it to send response)
 
    //=================================middlewares==================================================//
    -middleware: ia a name for any code which run on the server between getting a request and send response
+   -A series of functions that the request "goes through"
    -a function run in get handlers it is also middleware (code run between getting req and send res )the different that get handler it is only fire functions only for get requests to certain ruotes
 
    -the use method is generelly used to create middlewares and run middleware code (function) 
+   -Application Middleware run on every route/request(Error Handling, Logging, BODY Parsing)
+  -Route Middleware runs on specific routes(Are you logged in?)
+
    -use method function run for every single requests coming in (it will run for every types of requests to all routes )
    -position /order of middleware is important (control how runs)
+   -Your route handler (your normal (req,res) function) is always the last middleware in the series!
    **middleware examples:
    1.logger middleware===>logs details for every req
    2.404==>return 404 pages
@@ -65,6 +70,10 @@ req obj (req info)//res obj (use it to send response)
 how to move on we have to explicity tell express to move on to the next function down the middleware
 - we do this by using next function (use it as para to middleware  function(to access it )(req,res.next))
 -then call it (that mean we say to express look we finished inside this middleware now move on to the next (because we are not sending response yet to browser we just do something (like log details) and now move on and check routes handlers to  send response ) )
+-so middleware function created receives (req,res,next) as parameters
+-next()
+**call without argument next()===>this mean okey run the next middleware
+**call next and pass argument next("you have to login")===>skipped all other middle wares and run error handler with that argument as error
 //===================================logger middleware ================================//
 -run for every single req comimg on and logs details about it 
 -at top cause if i add i at button then express move from top to button and is stop carry on (move on to the rest of code when response send so when i send res it will not reach logger middle ware so i add it at top and because express does not know whan to do after run middleware function (do something /nort send res) we use next function as para in middleware function and call it to say to express that we finished inside middleware and move on to the next)
@@ -170,4 +179,67 @@ app.use((req, res) => {
   });
 });
 
-//=============================middlewares====================================//
+//=============================Error-handling middleware====================================//
+/*
+-error-handling middleware have recieves  4  parameters are err, req, res, and next. They deal with errors that are generated in the app.
+-Express has an in-built error handling middleware, which will handle any errors that are generated in the app. So, usually you won't need to write your own error handling middleware.
+-app.use((err,req,res,next)=>{
+  console.log("error")
+  next(err)===>if call next ans pass argument to it /it will skipped all middlewares and  run built end error handler in express with ardument as error
+
+})
+-if you want to handle 404/500errors by customes middlewares 
+404 handlers //catch all 404 and  forward to error handling middleware
+app.use((req,res)=>{
+res.status(404).send("404 error")//or send html page ...etc
+//or
+const error = throw new Error ("not-found  ${req.originalUrl}") 
+res.status(404)
+next()
+})
+
+//handle 500 
+app.use((err,req,res,nest)=>{
+  res.status(err.status||500).send()
+
+   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+    res.status(statusCode).json({
+{
+      message: err.message,
+    })
+})
+*/
+
+//=========================res.json/res.send=============================================//
+/*
+-Does Res send send JSON?
+The res. send function sets the content type to text/Html which means that the client will now treat it as text. ... json function on the other handsets the content-type header to application/JSON so that the client treats the response string as a valid JSON object. It also then returns the response to the client
+
+
+When an object or array is passed to it, this method is identical to res.send(). Unlike res.send(), however, res.json() may also be used for explicit JSON conversion of non-objects (null, undefined, etc.), even though these are technically not valid JSON.
+
+ This header is used by the frontend to determine the type of the response and parse it accordingly. 
+-Whenever an Express application server receives an HTTP request, it will provide the developer with an object, commonly referred to as res
+
+ -res.send():
+ The signature of this method looks like this: res.send([body]) where the body can be any of the following: Buffer, String, an Object and an Array.
+This method automatically sets the Content-Type response header as well based on the argument passed to the send() method, 
+for example if the [body] is a Bufferthe Content-Type will be set toapplication/octet-stream
+unless of course we programmatically set it to be something else.
+res.set('Content-Type', 'text/html');.
+
+app.get('/api/test', (req, res) => {
+  res.send({ hello: 'world' });
+});
+
+res header :
+Content-Type: application/json; charset=utf-8
+
+
+res.json(
+   res.json()
+It sends a JSON response. This method is identical to res.send() when an object or array is passed, but it also converts non-objects to json.
+res.json calls res.send at the end. When you have an object or array which you have to pass as a response then you can use any one of them.
+But the main difference between res.json and res.send comes into picture when you have to pass non objects as a response. res.json will convert non objects (ex. null, undefined etc) as well which are actually not a valid JSON whereas res.send will not convert them.
+)
+*/

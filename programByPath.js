@@ -90,9 +90,10 @@ app.post('/open-program', (req, res) => {
             console.error(`Error opening program: ${error}`);
             return res.status(500).json({ error: 'Internal server error' });
         }
-        console.log(`Program opened: ${programPath}`);
-        res.status(200).json({ message: 'Program opened successfully' });
+        
     });
+    console.log(`Program opened: ${programPath}`);
+        res.status(200).json({ message: 'Program opened successfully' });
 });
 
 app.listen(3000, () => {

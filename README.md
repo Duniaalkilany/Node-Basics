@@ -54,12 +54,12 @@ above is abilites or things can do it by using server-side language but we can d
 ---node -v in terminal (version of node )
 -node then enter ===>run js directly inside terminal(writ js code )
 ---when install node in your computer , you can run js directly in our computer
--exit node in terminal (ctrl c /ctrl d /.exit)
+-exit node in terminal (ctrl c /ctrl d /call process.exit()in code )
 
 //==running files through Node js ================================================
 -write / run js files on our computer
 -i have js file on my computer/create js file
--to run js file from terminal in VS/terminal-->new terminal --->in directly--->node fileName(to need to add js extension because it know you want to run js file)/terminal will act as console for us
+-to run js file from terminal in VS/terminal-->new terminal --->in directly--->node fileName(no need to add js extension because it know you want to run js file)/terminal will act as console for us
 -so in node js / i can run js file using VS terminal / linux terminal by write node fileName (no need to js extension because already know that node will run js file on our computer )
 -terminal will act as console in browser (ant things logs in file will appear)
 
